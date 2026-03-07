@@ -24,7 +24,7 @@ public class TwilioService {
     @Value("${twilio.phone.to}")
     private String toPhone;
 
-    @Value("${app.base.url}")
+    @Value("${RENDER_EXTERNAL_URL:http://localhost:10000}")
     private String appBaseUrl;
 
     @PostConstruct

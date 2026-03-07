@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,18 +25,24 @@ public class MapController {
     }
 
     @GetMapping("/narcan-sites")
-    public List<Site> getNarcanSites() {
-        return mapService.getNarcanSites();
+    public List<Site> getNarcanSites(
+            @RequestParam(defaultValue = "43.6532") double lat, 
+            @RequestParam(defaultValue = "-79.3832") double lng) {
+        return mapService.getNarcanSites(lat, lng);
     }
 
     @GetMapping("/safe-injection-sites")
-    public List<Site> getSafeInjectionSites() {
-        return mapService.getSafeInjectionSites();
+    public List<Site> getSafeInjectionSites(
+            @RequestParam(defaultValue = "43.6532") double lat, 
+            @RequestParam(defaultValue = "-79.3832") double lng) {
+        return mapService.getSafeInjectionSites(lat, lng);
     }
 
     @GetMapping("/therapy-sites")
-    public List<Site> getTherapySites() {
-        return mapService.getTherapySites();
+    public List<Site> getTherapySites(
+            @RequestParam(defaultValue = "43.6532") double lat, 
+            @RequestParam(defaultValue = "-79.3832") double lng) {
+        return mapService.getTherapySites(lat, lng);
     }
 
     @PostMapping("/build-route")

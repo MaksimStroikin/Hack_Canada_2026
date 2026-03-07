@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Chance - Map Testing</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid #ddd;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-narcan { background-color: #e74c3c; }
+        .btn-safe { background-color: #3498db; }
+        .btn-therapy { background-color: #2ecc71; }
+        .btn-clear { background-color: #95a5a6; }
+        
+        button:hover { opacity: 0.9; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <h1>📍 Map API Tester</h1>
+    <p>Click the buttons below to fetch data from your Spring Boot backend and draw it on the map!</p>
+
+    <div class="controls">
+        <button class="btn-narcan" onclick="fetchAndDraw('narcan-sites')">Find Narcan Sites</button>
+        <button class="btn-safe" onclick="fetchAndDraw('safe-injection-sites')">Find Safe Injection</button>
+        <button class="btn-therapy" onclick="fetchAndDraw('therapy-sites')">Find Therapy Centers</button>
+        <button class="btn-clear" onclick="clearMap()">Clear Map</button>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize Map
+        const map = L.map('map').setView([43.6532, -79.3832], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        let currentMarkers = [];
+        let userLat = 43.6532;
+        let userLng = -79.3832;
+
+        const markerColors = {
+            'narcan-sites': 'red',
+            'safe-injection-sites': 'blue',
+            'therapy-sites': 'green'
+        };
+
+        // Get Live User Location
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                userLat = position.coords.latitude;
+                userLng = position.coords.longitude;
+                map.setView([userLat, userLng], 13);
+                
+                L.circleMarker([userLat, userLng], {
+                    radius: 10,
+                    fillColor: "#ff7800",
+                    color: "#000",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map).bindPopup("<b>📍 YOU ARE HERE</b>").openPopup();
+                
+            }, function(error) {
+                console.warn("Geolocation blocked or failed. Using default Toronto coords.");
+            });
+        }
+
+        function clearMap() {
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentMarkers = [];
+        }
+
+        async function fetchAndDraw(endpoint) {
+            clearMap();
+            
+            // Re-draw the user location pin so it isn't cleared
+             L.circleMarker([userLat, userLng], {
+                radius: 10, fillColor: "#ff7800", color: "#000", weight: 1, opacity: 1, fillOpacity: 0.8
+            }).addTo(map).bindPopup("<b>📍 YOU ARE HERE</b>");
+
+            try {
+                // Fetch from Spring Boot, passing live coordinates!
+                const url = `http://localhost:8080/api/map/${endpoint}?lat=${userLat}&lng=${userLng}`;
+                console.log("Fetching: " + url);
+                
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("Server returned " + response.status);
+                
+                const sites = await response.json();
+
+                if(sites.length === 0) {
+                    alert('No places found within 5km!');
+                    return;
+                }
+
+                // Plot each site on the map
+                sites.forEach(site => {
+                    const lat = site.geolocation[0];
+                    const lng = site.geolocation[1];
+                    const hours = site.hoursOfOperation;
+                    
+                    const marker = L.circleMarker([lat, lng], {
+                        radius: 8,
+                        fillColor: markerColors[endpoint] || 'blue',
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    }).addTo(map);
+
+                    marker.bindPopup(`
+                        <b>${site.siteName}</b><br>
+                        ⏱️ Hours: ${hours[0]}:00 - ${hours[1]}:00<br>
+                        📍 Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}
+                    `).openPopup();
+
+                    currentMarkers.push(marker);
+                });
+
+                // Zoom map out to fit the new markers
+                const group = new L.featureGroup(currentMarkers);
+                map.fitBounds(group.getBounds().pad(0.1));
+
+            } catch (error) {
+                console.error("Error fetching map data:", error);
+                alert("Failed to reach Spring Boot Backend! Make sure it is running on localhost:8080.");
+            }
+        }
+    </script>
+
+</body>
+</html>

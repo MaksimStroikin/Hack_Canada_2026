@@ -29,10 +29,16 @@ public class SosController {
     public ResponseEntity<Map<String, String>> emergencyCall(@RequestBody SosRequest request) {
         
         // 1. Generate the dynamic text string containing the user's live GPS coordinates.
+        // We repeat the coordinates 3 times so the receiver has time to write them down.
         String crisisText = String.format(
             "Emergency. This is an automated medical SOS call from the Second Chance application. " +
             "A suspected opioid overdose is in progress. The patient is located at GPS coordinates: " +
-            "Latitude %.4f, Longitude %.4f. Please send medical assistance immediately.",
+            "Latitude %.4f, Longitude %.4f. " +
+            "I repeat. The patient is at Latitude %.4f, Longitude %.4f. " +
+            "One more time. Latitude %.4f, Longitude %.4f. " +
+            "Please send medical assistance immediately.",
+            request.getLatitude(), request.getLongitude(),
+            request.getLatitude(), request.getLongitude(),
             request.getLatitude(), request.getLongitude()
         );
 

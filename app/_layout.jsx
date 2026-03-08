@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, Pressable, Platform } from 'react-native'
+import { StyleSheet, Text, View, KeyboardAvoidingView, Pressable, Platform, Image } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import React from 'react'
 import { Stack, useRouter } from 'expo-router'
@@ -15,7 +15,15 @@ const _layout = () => {
             keyboardVerticalOffset={30}
             style={layout_styles.background}>
             <SafeAreaView style={layout_styles.headerContainer} edges={['top']}>
-                <Text>SecondChance</Text>
+                <View style={layout_styles.logoContainer}>
+                    <Image
+                        source={require('../assets/logo_hackathon.png')}
+                        style={layout_styles.logoWrapper}
+                    />
+                    <View style={layout_styles.logoTextContainer}>
+                        <Text style={layout_styles.logoText}>Second Chance</Text>
+                    </View>
+                </View>
                 <Pressable
                     onPress={() => router.push('/info')}
                     style={({ pressed }) => [ui_elements_styles.infoButton, ui_elements_styles.button, pressed && ui_elements_styles.buttonPressed]}

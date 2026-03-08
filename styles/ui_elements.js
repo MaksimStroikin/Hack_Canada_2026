@@ -117,7 +117,15 @@ export const ui_elements_styles = StyleSheet.create({
         aspectRatio: "1/1",
         borderWidth: 5,
         borderColor: "#1E5E65",
-        fontWeight: 30
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+    },
+    responseChoiceText: {
+        color: "#1E5E65",
+        fontWeight: "bold",
+        fontSize: 24,
+        textAlign: "center",
     },
     sendMessageButton: {
         alignSelf: "stretch",
@@ -125,6 +133,14 @@ export const ui_elements_styles = StyleSheet.create({
         padding: 5,
         borderWidth: 5,
         borderColor: "#1E5E65",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+    },
+    sendMessageText: {
+        color: "#1E5E65",
+        fontWeight: "bold",
+        fontSize: 16,
     },
     suggestedQuestionContainer: {
         flex: 1,
@@ -133,7 +149,11 @@ export const ui_elements_styles = StyleSheet.create({
         borderWidth: 5,
         borderColor: "#1E5E65",
         borderRadius: 10,
-        fontWeight: "bold"
+    },
+    suggestedQuestionText: {
+        color: "#1E5E65",
+        fontWeight: "bold",
+        fontSize: 20,
     },
     speakerContainer: {
         width: "100%",

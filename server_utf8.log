@@ -1,0 +1,40 @@
+﻿Starting project at C:\Users\maxim\Desktop\HackCanada
+Starting Metro Bundler
+
+warning: Bundler cache is empty, rebuilding (this may take a minute)
+node.exe : The 
+following packages 
+should be updated for 
+best compatibility 
+with the installed 
+expo version:
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (The following   
+  p...d expo versio    
+n::String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+  react@19.2.4 - 
+expected version: 
+19.2.0
+Your project may not 
+work correctly until 
+you install the 
+expected versions of 
+the packages.
+Waiting on http://localhost:8082
+Logs for your project will appear below.

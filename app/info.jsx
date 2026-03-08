@@ -13,16 +13,16 @@ export default function Info() {
                     <Text style={ui_elements_styles.infoListText}>Spot an Overdose</Text>
                 </Pressable>
                 <Pressable style={({ pressed }) => [ui_elements_styles.infoListButton, pressed && ui_elements_styles.buttonPressed,
-                ui_elements_styles.button]}>
+                ui_elements_styles.button]} onPress={() => router.push({ pathname: '/map', params: { apiEndpoint: '/map/narcan-sites' } })}>
                     <Text style={ui_elements_styles.infoListText}>NALOXONE Help</Text>
                 </Pressable>
                 <Pressable style={({ pressed }) => [ui_elements_styles.infoListButton, pressed && ui_elements_styles.buttonPressed,
-                ui_elements_styles.button]}>
-                    <Text style={ui_elements_styles.infoListText}>Talk to Someone</Text>
+                ui_elements_styles.button]} onPress={() => router.push({ pathname: '/map', params: { apiEndpoint: '/map/therapy-sites' } })}>
+                    <Text style={ui_elements_styles.infoListText}>Therapy Centers</Text>
                 </Pressable>
                 <Pressable style={({ pressed }) => [ui_elements_styles.infoListButton, pressed && ui_elements_styles.buttonPressed,
-                ui_elements_styles.button]}>
-                    <Text style={ui_elements_styles.infoListText}>Opioid Resource Map</Text>
+                ui_elements_styles.button]} onPress={() => router.push({ pathname: '/map', params: { apiEndpoint: '/map/safe-injection-sites' } })}>
+                    <Text style={ui_elements_styles.infoListText} >Safe Injection Sites</Text>
                 </Pressable>
             </View>
             <View style={info_styles.floatingButtonContainer}>

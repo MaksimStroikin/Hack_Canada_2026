@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const layout_styles = StyleSheet.create({
     background: {
-        flex: 1
+        flex: 1,
     },
     headerContainer: {
         width: '100%',
@@ -26,7 +26,6 @@ export const layout_styles = StyleSheet.create({
         flex: 1,
         paddingLeft: 10,
         paddingRight: 10,
-        paddingTop: 10,
         paddingBottom: 10,
         backgroundColor: "#D8FFEB",
     }

@@ -50,9 +50,59 @@ export const ui_elements_styles = StyleSheet.create({
         color: "#1E5E65",
         fontSize: 20,
         fontWeight: "bold",
+    },
+    textInputContainer: {
+        width: "100%",
+        height: "auto",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        boxSizing: "border-box",
+        gap: 10
+    },
+    textInput: {
+        flex: 1,
+        fontSize: 20,
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        borderRadius: 10
+    },
+    responseChoiceContainer: {
+        width: "100%",
+        height: "auto",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: 10,
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        borderRadius: 10,
+        padding: 10
+    },
+    responseChoiceButton: {
+        width: 50,
+        aspectRatio: "1/1",
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        fontWeight: 30
+    },
+    sendMessageButton: {
+        alignSelf: "stretch",
+        aspectRatio: "1/1",
+        padding: 5,
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+    },
+    suggestedQuestionContainer: {
+        flex: 1,
+        width: "auto",
+        height: "auto",
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        borderRadius: 10,
+        fontWeight: "bold"
     }
-
-    /* Building Blocks/Button group/Connected segments/Large */
 })
 
 

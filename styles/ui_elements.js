@@ -41,7 +41,7 @@ export const ui_elements_styles = StyleSheet.create({
     },
     primaryEmergencyText: {
         color: "white",
-        fontSize: 100,
+        fontSize: 50,
         fontWeight: "bold",
     },
     secondaryEmergencyText: {

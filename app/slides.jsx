@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 import React, { useState } from 'react'
 import { slides_styles } from '../styles/pages/slides.js'
 import { ui_elements_styles } from '../styles/ui_elements.js'
+import { useLocalSearchParams } from 'expo-router';
 
 const Slides = () => {
     const [isMuted, setIsMuted] = useState(false);
-
+    const { slides } = useLocalSearchParams();
     return (
         <View style={slides_styles.contentContainer}>
             <View style={ui_elements_styles.speakerContainer}>
@@ -19,7 +20,13 @@ const Slides = () => {
                     />
                 </Pressable>
             </View>
-            <View style={slides_styles.SlidesContainer}></View>
+            <View style={slides_styles.SlidesContainer}>
+                <Image
+                    source={slides.image}
+                    style={slides_styles.slideImage}
+                />
+                <Text style={slides_styles.slideText}>{slides.text}</Text>
+            </View>
             <View style={slides_styles.userInteractionContainer}>
                 <View style={ui_elements_styles.responseChoiceContainer}>
                     <Pressable style={({ pressed }) => [ui_elements_styles.responseChoiceButton,

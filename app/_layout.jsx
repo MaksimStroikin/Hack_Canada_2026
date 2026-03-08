@@ -12,7 +12,7 @@ const _layout = () => {
         <View style={layout_styles.background}>
             <SafeAreaView style={layout_styles.headerContainer} edges={['top']}>
                 <Text>SecondChance</Text>
-                <Pressable 
+                <Pressable
                     onPress={() => router.push('/info')}
                     style={({ pressed }) => [ui_elements_styles.infoButton, ui_elements_styles.button, pressed && ui_elements_styles.buttonPressed]}
                 >

@@ -24,8 +24,8 @@ public class ElevenLabsService {
     @Value("${elevenlabs.api.key}")
     private String apiKey;
 
-    // We will use "Bella", a much softer, warmer, and more caring female voice
-    private static final String VOICE_ID = "EXAVITQu4vr4xnSDxMaL"; 
+    // We will use "Rachel", a calm and pleasant voice
+    private static final String VOICE_ID = "21m00Tcm4TlvDq8ikWAM"; 
     private static final String ELEVENLABS_API_URL = "https://api.elevenlabs.io/v1/text-to-speech/" + VOICE_ID;
 
     // We will save the generated MP3s to an external folder so we can serve them dynamically

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +13,14 @@
             max-width: 600px;
             margin: auto;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
         h1 {
             color: #d9534f;
         }
+
         .sos-button {
             padding: 20px 40px;
             background-color: #d9534f;
@@ -28,13 +31,15 @@
             font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: transform 0.1s;
         }
+
         .sos-button:active {
             transform: scale(0.95);
             background-color: #c9302c;
         }
+
         #responseArea {
             margin-top: 30px;
             padding: 15px;
@@ -46,10 +51,12 @@
         }
     </style>
 </head>
+
 <body>
 
     <h1>🚨 SOS Call Tester 🚨</h1>
-    <p>Make sure your Spring Boot backend is running. When you click this button, it will send fake GPS coordinates to your backend, generate the AI audio, and tell Twilio to call the phone number you registered!</p>
+    <p>Make sure your Spring Boot backend is running. When you click this button, it will send fake GPS coordinates to
+        your backend, generate the AI audio, and tell Twilio to call the phone number you registered!</p>
 
     <button class="sos-button" onclick="triggerSos()">TRIGGER SOS CALL</button>
 
@@ -58,7 +65,7 @@
     <script>
         function triggerSos() {
             const responseArea = document.getElementById('responseArea');
-            
+
             if (!("geolocation" in navigator)) {
                 responseArea.innerHTML = "<span style='color:red;'>🚨 Your browser does not support GPS location!</span>";
                 return;
@@ -66,12 +73,12 @@
 
             responseArea.innerHTML = "<i>Acquiring your live GPS coordinates...</i>";
 
-            navigator.geolocation.getCurrentPosition(async function(position) {
+            navigator.geolocation.getCurrentPosition(async function (position) {
                 const payload = {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 };
-                
+
                 responseArea.innerHTML = `<i>Location found (${payload.latitude.toFixed(4)}, ${payload.longitude.toFixed(4)}). Dialing out via Twilio...</i>`;
 
                 try {
@@ -92,10 +99,11 @@
                     console.error("Error:", error);
                     responseArea.innerHTML = "<span style='color:red;'>🚨 Error connecting to backend! Is your Spring Boot server running?</span>";
                 }
-            }, function(error) {
+            }, function (error) {
                 responseArea.innerHTML = "<span style='color:red;'>🚨 Failed to get location! Make sure you clicked 'Allow' in the browser popup!</span>";
             });
-        }
+        }   
     </script>
 </body>
+
 </html>

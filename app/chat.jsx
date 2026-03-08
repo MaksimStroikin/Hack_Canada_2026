@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, View, Pressable, Text } from 'react-native'
+import { StyleSheet, TextInput, View, Pressable, Text, Image } from 'react-native'
 import React from 'react'
 import { chat_styles } from '../styles/pages/chat'
 import { ui_elements_styles } from '../styles/ui_elements'
@@ -6,6 +6,14 @@ import { ui_elements_styles } from '../styles/ui_elements'
 const Chat = () => {
     return (
         <View style={chat_styles.contentContainer}>
+            <View style={ui_elements_styles.speakerContainer}>
+                <Pressable style={({ pressed }) => [ui_elements_styles.speakerWrapper, pressed && ui_elements_styles.buttonPressed]}>
+                    <Image
+                        source={require('../assets/speaker.png')}
+                        style={ui_elements_styles.speaker}
+                    />
+                </Pressable>
+            </View>
             <View style={chat_styles.responseContainer}></View>
             <View style={chat_styles.userInteractionContainer}>
                 <View style={ui_elements_styles.responseChoiceContainer}>

@@ -24,7 +24,7 @@ export default function Info() {
                     <Text style={ui_elements_styles.infoListText}>Opioid Resource Map</Text>
                 </Pressable>
             </View>
-            <View style={ui_elements_styles.floatingButtonContainer}>
+            <View style={info_styles.floatingButtonContainer}>
                 <Link href="/chat" asChild>
                     <Pressable>
                         {({ pressed }) => (

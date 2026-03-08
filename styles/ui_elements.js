@@ -68,13 +68,6 @@ export const ui_elements_styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
     },
-    floatingButtonContainer: {
-        position: 'absolute',
-        bottom: 40,
-        right: 20,
-        zIndex: 100,
-        elevation: 5,
-    },
     floatingButton: {
         width: 80,
         height: 80,
@@ -89,59 +82,78 @@ export const ui_elements_styles = StyleSheet.create({
         width: 45,
         height: 45,
         resizeMode: 'contain',
-    }
-},
+    },
     textInputContainer: {
-    width: "100%",
-    height: "auto",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    boxSizing: "border-box",
-    gap: 10
-},
+        width: "100%",
+        height: "auto",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        boxSizing: "border-box",
+        gap: 10
+    },
     textInput: {
-    flex: 1,
-    fontSize: 20,
-    borderWidth: 5,
-    borderColor: "#1E5E65",
-    borderRadius: 10
-},
+        flex: 1,
+        fontSize: 20,
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        borderRadius: 10
+    },
     responseChoiceContainer: {
-    width: "100%",
-    height: "auto",
-    display: "flex",
-    justifyContent: "space-between",
-    gap: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 5,
-    borderColor: "#1E5E65",
-    borderRadius: 10,
-    padding: 10
-},
+        width: "100%",
+        height: "auto",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: 10,
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        borderRadius: 10,
+        padding: 10
+    },
     responseChoiceButton: {
-    width: 50,
-    aspectRatio: "1/1",
-    borderWidth: 5,
-    borderColor: "#1E5E65",
-    fontWeight: 30
-},
+        width: 50,
+        aspectRatio: "1/1",
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        fontWeight: 30
+    },
     sendMessageButton: {
-    alignSelf: "stretch",
-    aspectRatio: "1/1",
-    padding: 5,
-    borderWidth: 5,
-    borderColor: "#1E5E65",
-},
+        alignSelf: "stretch",
+        aspectRatio: "1/1",
+        padding: 5,
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+    },
     suggestedQuestionContainer: {
-    flex: 1,
-    width: "auto",
-    height: "auto",
-    borderWidth: 5,
-    borderColor: "#1E5E65",
-    borderRadius: 10,
-    fontWeight: "bold"
-})
+        flex: 1,
+        width: "auto",
+        height: "auto",
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        borderRadius: 10,
+        fontWeight: "bold"
+    },
+    speakerContainer: {
+        width: "100%",
+        display: "flex",
+        alignItems: "flex-start",
+    },
+    speakerWrapper: {
+        paddingVertical: 5,
+        paddingHorizontal: 20,
+        borderWidth: 5,
+        borderColor: "#1E5E65",
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    speaker: {
+        width: 50,
+        height: 50,
+        resizeMode: 'contain',
+    }
+});
 
 

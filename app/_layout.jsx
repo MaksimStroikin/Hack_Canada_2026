@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, Pressable, Platform, Image } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import React from 'react'
-import { Stack, useRouter } from 'expo-router'
+import { Stack, useRouter, usePathname } from 'expo-router'
 import { layout_styles } from '../styles/pages/layout'
 import { ui_elements_styles } from '../styles/ui_elements'
 
 const _layout = () => {
     const router = useRouter();
+    const pathname = usePathname();
     const insets = useSafeAreaInsets();
 
     return (
@@ -24,12 +25,16 @@ const _layout = () => {
                         <Text style={layout_styles.logoText}>Second Chance</Text>
                     </View>
                 </View>
-                <Pressable
-                    onPress={() => router.push('/map')}
-                    style={({ pressed }) => [ui_elements_styles.infoButton, ui_elements_styles.button, pressed && ui_elements_styles.buttonPressed]}
+                {(pathname === '/' || pathname === '/index') ? <Pressable
+                    onPress={() => router.push('/info')}
+                    style={({ pressed }) => [ui_elements_styles.headerButton, ui_elements_styles.button, pressed && ui_elements_styles.buttonPressed]}
                 >
-                    <Text style={ui_elements_styles.infoText}>More Info</Text>
-                </Pressable>
+                    <Text style={ui_elements_styles.headerText}>More Info</Text>
+                </Pressable> : <Pressable
+                    onPress={() => router.back()}
+                    style={ui_elements_styles.headerButton}>
+                    <Text style={ui_elements_styles.headerText}>Back</Text>
+                </Pressable>}
             </SafeAreaView>
             <SafeAreaView style={[layout_styles.contentContainer, { paddingTop: insets.top + 70 }]} edges={['bottom', 'left', 'right']}>
                 <Stack screenOptions={{ contentStyle: { backgroundColor: 'transparent' } }}>

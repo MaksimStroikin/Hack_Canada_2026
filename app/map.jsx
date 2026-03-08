@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 import MapView from 'react-native-maps'
 import { LeafletView } from 'react-native-leaflet-view'
-import { leafletHtml } from './leafletHtml'
+import { leafletHtml } from '../utils/leafletHtml'
 import { map_styles } from '../styles/pages/map'
 import { ui_elements_styles } from '../styles/ui_elements'
 

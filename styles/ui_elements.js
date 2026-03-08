@@ -14,7 +14,8 @@ export const ui_elements_styles = StyleSheet.create({
         backgroundColor: "#FF0000",
         width: "100%",
         aspectRatio: "1/1",
-        borderRadius: 3,
+        borderWidth: 5,
+        borderRadius: 10,
         color: "#000000ff",
     },
     secondaryEmergencyButton: {
@@ -24,9 +25,10 @@ export const ui_elements_styles = StyleSheet.create({
         paddingTop: 20,
         paddingBottom: 20,
         color: "#000000ff",
-        borderRadius: 3,
+        borderWidth: 5,
+        borderRadius: 10,
     },
-    infoButton: {
+    headerButton: {
         backgroundColor: "#F3F4EF",
         paddingVertical: 5,
         paddingHorizontal: 12,
@@ -47,7 +49,7 @@ export const ui_elements_styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: "bold",
     },
-    infoText: {
+    headerText: {
         color: "#1E5E65",
         fontSize: 20,
         fontWeight: "bold",

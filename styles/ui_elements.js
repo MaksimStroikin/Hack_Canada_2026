@@ -153,6 +153,9 @@ export const ui_elements_styles = StyleSheet.create({
         width: 50,
         height: 50,
         resizeMode: 'contain',
+    },
+    locationInfoText: {
+        fontSize: 20
     }
 });
 

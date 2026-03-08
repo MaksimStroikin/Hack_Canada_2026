@@ -17,7 +17,7 @@ const _layout = () => {
             <SafeAreaView style={layout_styles.headerContainer} edges={['top']}>
                 <Text>SecondChance</Text>
                 <Pressable
-                    onPress={() => router.push('/info')}
+                    onPress={() => router.push('/map')}
                     style={({ pressed }) => [ui_elements_styles.infoButton, ui_elements_styles.button, pressed && ui_elements_styles.buttonPressed]}
                 >
                     <Text style={ui_elements_styles.infoText}>More Info</Text>

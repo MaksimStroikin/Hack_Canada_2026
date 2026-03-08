@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 import { useRouter } from 'expo-router'
 import { info_styles } from '../styles/pages/info.js'
 import { ui_elements_styles } from '../styles/ui_elements.js'
+import { overdozeInfoSlides } from '../context/overdose_info.js';
 
 export default function Info() {
     const router = useRouter();
@@ -9,7 +10,7 @@ export default function Info() {
         <View style={info_styles.container}>
             <View style={info_styles.buttonsContainer}>
                 <Pressable style={({ pressed }) => [ui_elements_styles.infoListButton, pressed && ui_elements_styles.buttonPressed,
-                ui_elements_styles.button]} onPress={() => router.push('/slides')} >
+                ui_elements_styles.button]} onPress={() => router.push({ pathname: '/slides', params: { slides: JSON.stringify(overdozeInfoSlides) } })} >
                     <Text style={ui_elements_styles.infoListText}>Spot an Overdose</Text>
                 </Pressable>
                 <Pressable style={({ pressed }) => [ui_elements_styles.infoListButton, pressed && ui_elements_styles.buttonPressed,

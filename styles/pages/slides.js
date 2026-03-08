@@ -17,6 +17,7 @@ export const slides_styles = StyleSheet.create({
         flex: 1,
         borderWidth: 5,
         borderColor: "#1E5E65",
+        backgroundColor: "#FFFFFF",
         borderRadius: 10,
         padding: 5,
     }

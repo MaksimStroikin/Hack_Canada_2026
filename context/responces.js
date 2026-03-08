@@ -1,4 +1,4 @@
-export default questionsAndResponces = [
+export const questionsAndResponces = [
     {
         question: "What is an Overdose?",
         responce: "An overdose happens when a person takes too much of a drug or substance and their body cannot handle it. With opioids, an overdose can slow or stop breathing, which can quickly become life-threatening without medical help."

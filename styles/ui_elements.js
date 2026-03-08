@@ -178,7 +178,17 @@ export const ui_elements_styles = StyleSheet.create({
     },
     locationInfoText: {
         fontSize: 20
-    }
+    },
+    slideImage: {
+        width: "100%",
+        flex: 1,
+        resizeMode: "contain",
+    },
+    slideText: {
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "center",
+    },
 });
 
 

@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, Pressable, Alert } from 'react-native'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import { index_styles } from '../styles/pages/index.js'
 import { ui_elements_styles } from '../styles/ui_elements.js'
 import React, { useState, useEffect, useRef } from 'react';
 import * as Location from 'expo-location';
+import { externalHelpSlides } from '../context/external_help_info.js';
 
 export default function Home() {
+    const router = useRouter();
     const [countdown, setCountdown] = useState(null);
     const countdownIntervalRef = useRef(null);
 
@@ -34,7 +36,7 @@ export default function Home() {
 
     const triggerSos = async () => {
         Alert.alert("SOS triggered", "Acquiring your live GPS coordinates...");
-        
+
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
             Alert.alert("Permission Denied", "🚨 Failed to get location! Make sure you clicked 'Allow' in the permissions popup!");
@@ -71,7 +73,7 @@ export default function Home() {
 
     return (
         <View style={index_styles.buttonsContainer}>
-            <Pressable 
+            <Pressable
                 onPress={handleSosPress}
                 style={({ pressed }) => [ui_elements_styles.primaryEmergencyButton, pressed && ui_elements_styles.buttonPressed,
                 ui_elements_styles.button]}>
@@ -80,7 +82,7 @@ export default function Home() {
                 </Text>
             </Pressable>
             <Pressable style={({ pressed }) => [ui_elements_styles.secondaryEmergencyButton, pressed && ui_elements_styles.buttonPressed,
-            ui_elements_styles.button]}>
+            ui_elements_styles.button]} onPress={() => router.push({ pathname: '/slides', params: { slides: JSON.stringify(externalHelpSlides) } })}>
                 <Text style={ui_elements_styles.secondaryEmergencyText}>HELP SOMEONE</Text>
             </Pressable>
         </View>

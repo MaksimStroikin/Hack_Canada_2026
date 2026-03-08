@@ -2,6 +2,7 @@
   "expo": {
     "name": "Second Chance Overdose Prevention App",
     "slug": "Second_Chance_Overdose_Prevention_App",
+    "scheme": "scopa",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo_hackathon.png",
